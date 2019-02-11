@@ -10,7 +10,7 @@ class category
 
         $query = db::connect()->query($sql);
 
-        return $categoryList = $query->fetchAll();
+        return $query->fetchAll();
 
 
     }
