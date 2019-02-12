@@ -34,5 +34,32 @@ class cartController{
         return true;
     }
 
+    public function actionDelete($id)
+    {
+
+        // Удаляем заданный товар из корзины
+        cart::deleteProduct($id);
+        // Возвращаем пользователя в корзину
+        header("Location: /cart");
+    }
+
+    public function actionAddone($id)
+    {
+
+        // Удаляем заданный товар из корзины
+        cart::addoneProduct($id);
+        // Возвращаем пользователя в корзину
+        header("Location: /cart");
+    }
+
+    public function actionDelone($id)
+    {
+
+        // Удаляем заданный товар из корзины
+        cart::deloneProduct($id);
+        // Возвращаем пользователя в корзину
+        header("Location: /cart");
+    }
+
 
 }

@@ -64,4 +64,49 @@ class cart
         return $total;
     }
 
+    public static function deleteProduct($id)
+    {
+        $productsInCart = self::getProducts();
+        unset($productsInCart[$id]);
+        $_SESSION['product'] = $productsInCart;
+    }
+
+    public static function addoneProduct($id)
+    {
+        $id = intval($id);
+
+        $productInCart = self::getProducts();
+
+
+        if (isset($_SESSION['product'])) {
+            $productInCart = $_SESSION['product'];
+        }
+
+        if (array_key_exists($id, $productInCart)) {
+            $productInCart[$id]++;
+        } else {
+            $productInCart[$id] = 1;
+        }
+
+        $_SESSION['product'] = $productInCart;
+    }
+
+    public static function deloneProduct($id)
+    {
+        $id = intval($id);
+
+        $productInCart = self::getProducts();
+
+
+        if (isset($_SESSION['product'])) {
+            $productInCart = $_SESSION['product'];
+        }
+
+        if (array_key_exists($id, $productInCart)) {
+            $productInCart[$id]--;
+        }
+
+        $_SESSION['product'] = $productInCart;
+    }
+
 }

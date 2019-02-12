@@ -44,7 +44,12 @@
                                     <td><?php echo $product['price']; ?></td>
                                     <td><?php echo $productsInCart[$product['id']]; ?></td>
                                     <td>
-
+                                        <a href="/cart/delete/<?php echo $product['id'];?>">Delete
+                                        </a>
+                                        <a href="/cart/addone/<?php echo $product['id'];?>">Addone
+                                        </a>
+                                        <a href="/cart/delone/<?php echo $product['id'];?>">Delete_one
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
