@@ -1,3 +1,4 @@
+<?php include_once ROOT.'/model/cart.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,13 +55,15 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.php"><img src="../../template/images/home/logo.png" alt=""/></a>
+                        <a href="/"><img src="../../template/images/home/logo.png" alt=""/></a>
                     </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i> Корзина</a></li>
+                            <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Корзина
+                                <span id="cart-count"><?php echo cart::countItems();?>
+                                </span></a></li>
                             <li><a href="#"><i class="fa fa-user"></i> Аккаунт</a></li>
                             <li><a href="#"><i class="fa fa-lock"></i> Вход</a></li>
                         </ul>
@@ -89,7 +92,7 @@
                             <li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="#">Каталог товаров</a></li>
-                                    <li><a href="#">Корзина</a></li>
+                                    <li><a href="/cart">Корзина</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Блог</a></li>

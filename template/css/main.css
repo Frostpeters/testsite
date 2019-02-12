@@ -347,6 +347,8 @@ ul.sub-menu {
 
 #footer {
   background: #F0F0E9;
+
+
 }
 
 
@@ -547,6 +549,9 @@ ul.sub-menu {
 .footer-bottom {
   background: #D6D6D0;
   padding-top: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .footer-bottom p {
