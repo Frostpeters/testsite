@@ -1,40 +1,33 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
 
 class cart
 {
-
+    
     public function addProduct($id)
     {
+        if (!is_numeric($id)) $id= 1;
 
-        $id = intval($id);
         $productInCart = array();
 
-        if (isset($_SESSION['product'])) {
-            $productInCart = $_SESSION['product'];
-        }
-
         if (array_key_exists($id, $productInCart)) {
-            $productInCart[$id]++;
+            $_SESSION['product'][$id]++;
         } else {
-            $productInCart[$id] = 1;
+            $_SESSION['product'][$id] = 1;
         }
-
-        $_SESSION['product'] = $productInCart;
+        
         return self::countItems();
-
     }
 
     public static function countItems()
     {
         if (isset($_SESSION['product'])) {
+            
             $count = 0;
+            
             foreach ($_SESSION['product'] as $id => $quantity) {
                 $count += $quantity;
             }
+            
             return $count;
         } else {
             return 0;
@@ -43,10 +36,8 @@ class cart
 
     public static function getProducts()
     {
-        if (isset($_SESSION['product'])) {
-            return $_SESSION['product'];
-        }
-        return false;
+        //так кортоше
+        return $_SESSION['product'] ?? false;
     }
 
     public static function getTotalPrice($products)
@@ -71,7 +62,10 @@ class cart
         $_SESSION['product'] = $productsInCart;
     }
 
-    public static function addoneProduct($id)
+    
+    //чим відрізняється від addProduct($id)? аналогічно з addOneProdcut
+    
+    public static function addOneProduct($id)
     {
         $id = intval($id);
 
@@ -90,8 +84,9 @@ class cart
 
         $_SESSION['product'] = $productInCart;
     }
+    //аналогічно з intval, тобі тут треба ціле чило, а якщо передати обєкт буде гайки
 
-    public static function deloneProduct($id)
+    public static function deleteOneProduct($id)
     {
         $id = intval($id);
 
